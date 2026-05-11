@@ -1,0 +1,1385 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estágio Jovens e Juniores · 15–17 Maio · FPN</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #042C53;
+    --blue: #185FA5;
+    --mid: #378ADD;
+    --light: #A8CDEF;
+    --pale: #E8F3FC;
+    --white: #FFFFFF;
+    --gold: #E8A020;
+    --vel-bg: #FFF7E6;
+    --vel-col: #B85C00;
+    --vel-border: #E8A020;
+    --mf-bg: #E8F3FC;
+    --mf-col: #185FA5;
+    --mf-border: #378ADD;
+    --fun-bg: #E8F5EE;
+    --fun-col: #1A6B3C;
+    --fun-border: #2ECC71;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: #F4F7FA;
+    color: #1A2535;
+    line-height: 1.6;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--navy);
+    color: white;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 90% 50%, rgba(55,138,221,.18) 0%, transparent 70%),
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 79px,
+        rgba(255,255,255,.03) 79px,
+        rgba(255,255,255,.03) 80px
+      );
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 56px 32px 48px;
+    position: relative;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,.1);
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--light);
+    margin-bottom: 20px;
+  }
+  .hero-badge::before {
+    content: '';
+    width: 7px; height: 7px;
+    background: var(--gold);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%,100%{opacity:1;transform:scale(1)}
+    50%{opacity:.5;transform:scale(1.4)}
+  }
+  .hero h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(36px, 6vw, 72px);
+    font-weight: 900;
+    line-height: .95;
+    text-transform: uppercase;
+    letter-spacing: -.01em;
+    margin-bottom: 12px;
+  }
+  .hero h1 span { color: var(--gold); }
+  .hero-sub {
+    font-size: 17px;
+    color: var(--light);
+    font-weight: 300;
+    margin-bottom: 36px;
+  }
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .hero-chip {
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .hero-chip strong { color: var(--gold); font-weight: 700; }
+
+  /* ── NAV ── */
+  .sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--navy);
+    border-bottom: 2px solid var(--blue);
+    box-shadow: 0 2px 16px rgba(4,44,83,.4);
+  }
+  .sticky-nav-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .sticky-nav-inner::-webkit-scrollbar { display: none; }
+  .nav-link {
+    padding: 14px 18px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.6);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: color .2s, border-color .2s;
+  }
+  .nav-link:hover, .nav-link.active {
+    color: white;
+    border-bottom-color: var(--gold);
+  }
+
+  /* ── CONTENT WRAPPER ── */
+  .content {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+
+  /* ── SECTION HEADERS ── */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--pale);
+  }
+  .section-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--blue);
+    background: var(--pale);
+    border: 1px solid var(--light);
+    border-radius: 6px;
+    padding: 3px 10px;
+  }
+  .section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(22px, 3.5vw, 32px);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .02em;
+    color: var(--navy);
+  }
+  .section-title span { color: var(--blue); }
+
+  /* ── OBJETIVOS ── */
+  .obj-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 12px;
+    margin-bottom: 48px;
+  }
+  .obj-card {
+    background: white;
+    border: 1px solid #DCE9F5;
+    border-left: 4px solid var(--blue);
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--navy);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    transition: border-left-color .2s, box-shadow .2s;
+  }
+  .obj-card:hover {
+    border-left-color: var(--gold);
+    box-shadow: 0 4px 16px rgba(4,44,83,.1);
+  }
+  .obj-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+
+  /* ── TIMELINE ── */
+  .day-section { margin-bottom: 56px; }
+  .day-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--navy);
+    color: white;
+    border-radius: 10px 10px 0 0;
+    padding: 10px 20px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-bottom: 0;
+  }
+  .day-label .day-num { color: var(--gold); font-size: 20px; }
+
+  .timeline {
+    background: white;
+    border: 1px solid #DCE9F5;
+    border-radius: 0 10px 10px 10px;
+    overflow: hidden;
+  }
+  .tl-item {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    border-bottom: 1px solid #EEF4FA;
+    transition: background .15s;
+  }
+  .tl-item:last-child { border-bottom: none; }
+  .tl-item:hover { background: #FAFCFF; }
+  .tl-time {
+    padding: 14px 16px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--blue);
+    border-right: 1px solid #EEF4FA;
+    display: flex;
+    align-items: center;
+    background: #F7FAFD;
+  }
+  .tl-body {
+    padding: 14px 18px;
+  }
+  .tl-title {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--navy);
+    margin-bottom: 2px;
+  }
+  .tl-detail {
+    font-size: 13px;
+    color: #5A7A9A;
+  }
+  .tl-item.highlight { background: #FFF8EC; }
+  .tl-item.highlight .tl-time { background: #FFF3DC; color: #B85C00; }
+  .tl-item.highlight .tl-title { color: #8A4400; }
+  .tl-item.water { background: #EEF6FF; }
+  .tl-item.water .tl-time { background: #DCF0FF; color: #0A4A8A; }
+  .tl-item.water .tl-title { color: #042C53; }
+  .tl-item.gym { background: #F0F5FF; }
+  .tl-item.spa { background: #F0FBF5; }
+  .tl-item.spa .tl-time { background: #DCF5E8; color: #1A6B3C; }
+  .tl-item.talk { background: #FFF5F0; }
+  .tl-item.talk .tl-time { background: #FFE8DC; color: #9A3400; }
+
+  /* ── SESSOES ── */
+  .session-block {
+    margin-bottom: 48px;
+  }
+  .session-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    background: var(--navy);
+    color: white;
+    padding: 14px 20px;
+    border-radius: 10px 10px 0 0;
+  }
+  .session-header h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+  }
+  .session-meta { font-size: 13px; color: var(--light); }
+  .session-meta strong { color: var(--gold); }
+
+  .grupos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border: 1px solid #DCE9F5;
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    overflow: hidden;
+  }
+  @media(max-width:700px){
+    .grupos-grid{ grid-template-columns: 1fr; }
+    .grupo-col:not(:last-child){ border-bottom: 1px solid #DCE9F5; }
+  }
+
+  .grupo-col {
+    border-right: 1px solid #DCE9F5;
+  }
+  .grupo-col:last-child { border-right: none; }
+
+  .grupo-head {
+    padding: 10px 16px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .vel .grupo-head { background: var(--vel-bg); color: var(--vel-col); border-bottom: 2px solid var(--vel-border); }
+  .mf .grupo-head  { background: var(--mf-bg);  color: var(--mf-col);  border-bottom: 2px solid var(--mf-border); }
+  .fun .grupo-head { background: var(--fun-bg); color: var(--fun-col); border-bottom: 2px solid var(--fun-border); }
+
+  .grupo-dist {
+    font-size: 13px;
+    font-weight: 700;
+    font-family: 'Barlow Condensed', sans-serif;
+  }
+
+  .grupo-body {
+    padding: 12px 16px;
+    background: white;
+  }
+  .grupo-coaches {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    color: #8A9AAA;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #EEF4FA;
+  }
+  .vel .grupo-coaches { color: var(--vel-col); }
+  .mf  .grupo-coaches { color: var(--mf-col); }
+  .fun .grupo-coaches { color: var(--fun-col); }
+
+  .serie-block {
+    margin-bottom: 12px;
+  }
+  .serie-label {
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: #8A9AAA;
+    margin-bottom: 4px;
+    display: block;
+  }
+  .serie-items {
+    list-style: none;
+  }
+  .serie-items li {
+    font-size: 12.5px;
+    color: #2A3A4A;
+    padding: 3px 0;
+    padding-left: 14px;
+    position: relative;
+    line-height: 1.4;
+    border-bottom: 1px dotted #EEF4FA;
+  }
+  .serie-items li:last-child { border-bottom: none; }
+  .serie-items li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--mid);
+    font-size: 10px;
+    top: 4px;
+  }
+
+  /* ── ATLETAS ── */
+  .atletas-section {
+    margin-bottom: 48px;
+  }
+  .atletas-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1px solid #DCE9F5;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  @media(max-width:700px){ .atletas-grid{ grid-template-columns: 1fr; } }
+
+  .atleta-col { border-right: 1px solid #DCE9F5; }
+  .atleta-col:last-child { border-right: none; }
+  .atleta-col-head {
+    padding: 12px 16px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .vel-col .atleta-col-head { background: var(--vel-bg); color: var(--vel-col); border-bottom: 2px solid var(--vel-border); }
+  .mf-col  .atleta-col-head { background: var(--mf-bg);  color: var(--mf-col);  border-bottom: 2px solid var(--mf-border); }
+  .fun-col .atleta-col-head { background: var(--fun-bg); color: var(--fun-col); border-bottom: 2px solid var(--fun-border); }
+
+  .atleta-col-coaches {
+    padding: 10px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    background: #F7FAFD;
+    border-bottom: 1px solid #DCE9F5;
+    color: #445566;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .coach-icon { font-size: 14px; }
+
+  .atleta-list { padding: 8px 0; background: white; }
+  .atleta-item {
+    padding: 7px 16px;
+    font-size: 13px;
+    color: #2A3A4A;
+    border-bottom: 1px solid #F0F5FA;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background .15s;
+  }
+  .atleta-item:last-child { border-bottom: none; }
+  .atleta-item:hover { background: #F7FAFD; }
+  .atleta-num {
+    font-size: 10px;
+    font-weight: 700;
+    color: #AABBCC;
+    width: 18px;
+    flex-shrink: 0;
+    font-family: 'Barlow Condensed', sans-serif;
+  }
+  .atleta-name { font-weight: 500; }
+  .atleta-name em { font-style: normal; font-weight: 300; color: #7A8A9A; }
+
+  /* ── NOTA ── */
+  .nota-box {
+    background: #FFF8E8;
+    border: 1px solid #F0D890;
+    border-left: 4px solid var(--gold);
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-size: 13.5px;
+    color: #5A4400;
+    margin-bottom: 48px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .nota-icon { font-size: 18px; flex-shrink: 0; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    color: rgba(255,255,255,.5);
+    text-align: center;
+    padding: 28px 24px;
+    font-size: 13px;
+  }
+  footer strong { color: white; }
+
+  /* ── UTILS ── */
+  section { scroll-margin-top: 54px; }
+
+  @media(max-width:600px){
+    .tl-item { grid-template-columns: 90px 1fr; }
+    .tl-time { font-size: 12px; padding: 10px 10px; }
+    .session-header { border-radius: 8px 8px 0 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">Federação Portuguesa de Natação</div>
+    <h1>Estágio<br><span>Jovens e Juniores</span></h1>
+    <p class="hero-sub">Complexo do Jamor · Cruz Quebrada · 3 Dias / 5 Sessões</p>
+    <div class="hero-meta">
+      <div class="hero-chip">📅 <strong>15 – 17 Maio 2025</strong></div>
+      <div class="hero-chip">🏊 <strong>5</strong> sessões de água</div>
+      <div class="hero-chip">👥 <strong>3</strong> grupos de treino</div>
+      <div class="hero-chip">🏅 <strong>27</strong> atletas</div>
+    </div>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav class="sticky-nav">
+  <div class="sticky-nav-inner">
+    <a class="nav-link" href="#objetivos">Objetivos</a>
+    <a class="nav-link" href="#dia1">Dia 1</a>
+    <a class="nav-link" href="#dia2">Dia 2</a>
+    <a class="nav-link" href="#dia3">Dia 3</a>
+    <a class="nav-link" href="#atletas">Grupos & Atletas</a>
+  </div>
+</nav>
+
+<div class="content">
+
+  <!-- OBJETIVOS -->
+  <section id="objetivos">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2 class="section-title">Objetivos <span>Gerais</span></h2>
+    </div>
+    <div class="obj-grid">
+      <div class="obj-card"><span class="obj-icon">🔄</span>Reativação da carga após macrociclo anterior</div>
+      <div class="obj-card"><span class="obj-icon">🎯</span>Consolidação técnica global</div>
+      <div class="obj-card"><span class="obj-icon">🫀</span>Desenvolvimento da base aeróbia</div>
+      <div class="obj-card"><span class="obj-icon">📈</span>Introdução progressiva de estímulos específicos</div>
+      <div class="obj-card"><span class="obj-icon">⚡</span>Trabalho neuromuscular inicial para velocistas</div>
+      <div class="obj-card"><span class="obj-icon">🏃</span>Desenvolvimento da capacidade aeróbia para meio-fundo</div>
+    </div>
+  </section>
+
+  <!-- DIA 1 -->
+  <section id="dia1" class="day-section">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Dia <span>1</span> — Entrada + Sessão 1 + Ginásio + Spa</h2>
+    </div>
+
+    <div style="margin-bottom:28px;">
+      <div class="day-label"><span class="day-num">D1</span> Planeamento Horário</div>
+      <div class="timeline">
+        <div class="tl-item highlight">
+          <div class="tl-time">12:00</div>
+          <div class="tl-body"><div class="tl-title">Chegada, Check-in e Briefing Técnico</div><div class="tl-detail">Entrega dos quartos · Verificação de material · Ajustes individuais por grupo</div></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">12:30</div>
+          <div class="tl-body"><div class="tl-title">🍽 Almoço</div></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">14:30</div>
+          <div class="tl-body"><div class="tl-title">📋 Reunião Rápida de Preparação (10 min)</div><div class="tl-detail">Objetivos do dia · Organização dos grupos</div></div>
+        </div>
+        <div class="tl-item water">
+          <div class="tl-time">15:00 – 17:15</div>
+          <div class="tl-body"><div class="tl-title">🏊 Sessão 1 — Água</div></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">17:30</div>
+          <div class="tl-body"><div class="tl-title">🥐 Snack</div></div>
+        </div>
+        <div class="tl-item gym">
+          <div class="tl-time">18:00 – 19:00</div>
+          <div class="tl-body"><div class="tl-title">💪 Ginásio</div></div>
+        </div>
+        <div class="tl-item spa">
+          <div class="tl-time">19:15 – 19:45</div>
+          <div class="tl-body"><div class="tl-title">♨️ Spa / Recuperação</div><div class="tl-detail">Hidromassagem</div></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">20:00</div>
+          <div class="tl-body"><div class="tl-title">🍽 Jantar</div></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">22:00</div>
+          <div class="tl-body"><div class="tl-title">😴 Repouso</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SESSAO 1 -->
+    <div class="session-block">
+      <div class="session-header">
+        <h3>Sessão 1 — Água · 15:00–17:15</h3>
+        <span class="session-meta">Vel <strong>4300m</strong> · MF <strong>6000m</strong> · Fundo <strong>7100m</strong></span>
+      </div>
+      <div class="grupos-grid">
+        <!-- VELOCIDADE -->
+        <div class="grupo-col vel">
+          <div class="grupo-head">⚡ Velocidade <span class="grupo-dist">4300m</span></div>
+          <div class="grupo-body">
+            <div class="grupo-coaches">Rui Costa + Rui Borges</div>
+            <div class="serie-block">
+              <span class="serie-label">Aquecimento</span>
+              <ul class="serie-items">
+                <li>8×100 @15 — 2 Livre / 1 braços / 1 Perna · últimas 4 ML</li>
+              </ul>
+            </div>
+            <div class="serie-block">
+              <span class="serie-label">Série 1 · 2×</span>
+              <ul class="serie-items">
+                <li>4×50 Drills ML @20s — 2 6/3 para alternados e 3/3 simultâneo; 2 tração alt. (ct a 50 cd braço) e bra sub sim.</li>
+                <li>2×50 SM @1'00 — 35 Prog + 15 Ez / 20 Forte + 30 Ez / (última 30 Ez + 20 Forte)</li>
+                <li>100 Perna Ez ML @3'00</li>
+              </ul>
+            </div>
+            <div class="serie-block">
+              <span class="serie-label">Série 2</span>
+              <ul class="serie-items">
+                <li>3× — 25 Partida bloco Entrada P100 + 15 Ez @1'10 + 50 P200 (média) @1'10 + 50 P100 (média) @4'00</li>
+                <li>2× — 25 Partida bloco Entrada P100 + 15 Ez @1'10 + 50 P200 (média) @1'10 + 50 P100 (média) @4'00</li>
+                <li>1× — 35 Partida bloco Entrada P100 + 15 Ez @1'10 + 50 P200 (média) @1'10 + 50 P100 (média)</li>
+              </ul>
+            </div>
+            <div class="serie-block">
+              <span class="serie-label">Recuperação · 2×</span>
+              <ul class="serie-items">
+                <li>4×75 Nado A1 ML @10</li>
+                <li>1×200 Perna social ML @10</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- MEIO FUNDO -->
+        <div class="grupo-col mf">
+          <div class="grupo-head">🏊 Meio Fundo <span class="grupo-dist">6000m</span></div>
+          <div class="grupo-body">
+            <div class="grupo-coaches">Diogo Pinto + Filipe Maçãs</div>
+            <div class="serie-block">
+              <span class="serie-label">Aquecimento · 2500m</span>
+              <ul class="serie-items">
+                <li>400 Liv (solto) · 200 Per (100 Cos + 100 Bru) · 200 Liv Bra</li>
+                <li>8×50 TT (Liv+1ºE)</li>
+                <li>4×100 Est (50 drill + 50 NC)</li>
+                <li>6×50 1ºE progressivo (1-3, 4-6)</li>
+                <li>4×100 Liv Regressivo 1-4</li>
+                <li>4×50 1ºE RP 200 (forte, saída controlada)</li>
+              </ul>
+            </div>
+            <div class="serie-block">
+              <span class="serie-label">Série Principal · 2700m</span>
+              <ul class="serie-items">
+                <li>2×50 C/Salto 2:00 · 4×50 S/Salto 1:30</li>
+                <li>2×100 S/Salto 2:00 (Palas)</li>
+                <li>8×50 S/Salto 50" (4 Palas + 4 Normal)</li>
+                <li>3×(6×100) 1:20/1:30 + 1:30 (3-A2, 3-A2+)</li>
+              </ul>
+            </div>
+            <div class="serie-block">
+              <span class="serie-label">Recuperação · 800m</span>
+              <ul class="serie-items">
+                <li>4×100 Liv Regressivo 1-4 · 1:30</li>
+                <li>4×100 Liv Per 10"</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- FUNDO -->
+        <div class="grupo-col fun">
+          <div class="grupo-head">🌊 Fundo <span class="grupo-dist">7100m</span></div>
+          <div class="grupo-body">
+            <div class="grupo-coaches">Pedro Silva + Diogo Girão</div>
+            <div class="serie-block">
+              <span class="serie-label">Aquecimento · 2100m</span>
+              <ul class="serie-items">
+                <li>600 (300 EE + 200 TT + 100 Liv R1/3)</li>
+                <li>3×300 Liv Bra 3:45 (Neg, Prog, Neg)</li>
+                <li>6×100 Liv Per S/B P1-3 1:45</li>
+              </ul>
+            </div>
+            <div class="serie-block">
+              <span class="serie-label">Técnica · 300m</span>
+              <ul class="serie-items">
+                <li>6×50 eficiência</li>
+              </ul>
+            </div>
+            <div class="serie-block">
+              <span class="serie-label">Série Principal · 4500m</span>
+              <ul class="serie-items">
+                <li>3×500 Liv 6:15 (1, ½, 1/5)</li>
+                <li>3×400 Liv 5:00 (Prog, Neg, Prog) + 1:00 int</li>
+                <li>3×200 Liv 2:40 (A3)</li>
+                <li>4×150 Liv 1:45 + 1:00</li>
+                <li>6×100 Liv 1:30</li>
+              </ul>
+            </div>
+            <div class="serie-block">
+              <span class="serie-label">Recuperação · 200m</span>
+              <ul class="serie-items"><li>Retorno à calma</li></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIA 2 -->
+  <section id="dia2" class="day-section">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Dia <span>2</span> — Sessão 2 + Sessão 3 + Palestra + Spa</h2>
+    </div>
+
+    <div style="margin-bottom:28px;">
+      <div class="day-label"><span class="day-num">D2</span> Planeamento Horário</div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-time">08:00</div>
+          <div class="tl-body"><div class="tl-title">☕ Pequeno-Almoço</div></div>
+        </div>
+        <div class="tl-item water">
+          <div class="tl-time">09:30 – 11:30</div>
+          <div class="tl-body"><div class="tl-title">🏊 Sessão 2 — Água</div></div>
+        </div>
+        <div class="tl-item spa">
+          <div class="tl-time">11:30 – 12:00</div>
+          <div class="tl-body"><div class="tl-title">♨️ Spa / Recuperação</div><div class="tl-detail">Hidromassagem</div></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">12:30</div>
+          <div class="tl-body"><div class="tl-title">🍽 Almoço</div></div>
+        </div>
+        <div class="tl-item talk">
+          <div class="tl-time">15:00 – 16:00</div>
+          <div class="tl-body"><div class="tl-title">🎤 Palestra — Objetivos &amp; Planeamento Competitivo</div></div>
+        </div>
+        <div class="tl-item water">
+          <div class="tl-time">16:15 – 18:15</div>
+          <div class="tl-body"><div class="tl-title">🏊 Sessão 3 — Água</div></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">18:30</div>
+          <div class="tl-body"><div class="tl-title">🥐 Snack</div></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">20:00</div>
+          <div class="tl-body"><div class="tl-title">🍽 Jantar</div></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">22:00</div>
+          <div class="tl-body"><div class="tl-title">😴 Repouso</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SESSAO 2 -->
+    <div class="session-block">
+      <div class="session-header">
+        <h3>Sessão 2 — Água · 09:30–11:30</h3>
+        <span class="session-meta">Vel <strong>4400m</strong> · MF <strong>4400m</strong> · Fundo <strong>6400m</strong></span>
+      </div>
+      <div class="grupos-grid">
+        <div class="grupo-col vel">
+          <div class="grupo-head">⚡ Velocidade <span class="grupo-dist">4400m</span></div>
+          <div class="grupo-body">
+            <div class="grupo-coaches">Rui Costa + Rui Borges</div>
+            <div class="serie-block">
+              <span class="serie-label">Aquecimento · 1000m</span>
+              <ul class="serie-items">
+                <li>400 Livres · 300 Bra · 200 Per (100 costas + 100 bruços)</li>
+                <li>4×50 TT (25 drill + 25 NC)</li>
+              </ul>
+            </div>
+            <div class="serie-block">
+              <span class="serie-label">Técnica Específica · 800m</span>
+              <ul class="serie-items">
+                <li>4×50 técnica (alinhamento e eficiência)</li>
+                <li>4×50 subaquáticos (até 15m forte + suave)</li>
+                <li>4×50 viragens (25 nado + vir + saída forte)</li>
+                <li>4×50 rendições (troca rápida e precisa)</li>
+              </ul>
+            </div>
+            <div class="serie-block">
+              <span class="serie-label">Aeróbio · 2400m · 3×</span>
+              <ul class="serie-items">
+                <li>5×100 Liv (1-Palas+BB, 2-BB, 3-NC) 1:15</li>
+                <li>50 Cos + 50 Bru</li>
+              </ul>
+            </div>
+            <div class="serie-block">
+              <span class="serie-label">Velocidade · 600m</span>
+              <ul class="serie-items">
+                <li>12×50 (25 MAX C/salto + 25 Suave)</li>
+              </ul>
+            </div>
+            <div class="serie-block">
+              <span class="serie-label">Recuperação · 200m</span>
+              <ul class="serie-items"><li>200 EE</li></ul>
+            </div>
+          </div>
+        </div>
+        <div class="grupo-col mf">
+          <div class="grupo-head">🏊 Meio Fundo <span class="grupo-dist">4400m</span></div>
+          <div class="grupo-body">
+            <div class="grupo-coaches">Diogo Pinto + Filipe Maçãs</div>
+            <div class="serie-block">
+              <span class="serie-label">Aquecimento · 1000m</span>
+              <ul class="serie-items">
+                <li>400 Livres · 300 Bra · 200 Per (100 costas + 100 bruços)</li>
+                <li>4×50 TT (25 drill + 25 NC)</li>
+              </ul>
+            </div>
+            <div class="serie-block">
+              <span class="serie-label">Técnica Específica · 800m</span>
+              <ul class="serie-items">
+                <li>4×50 técnica (alinhamento e eficiência)</li>
+                <li>4×50 subaquáticos (até 15m forte + suave)</li>
+                <li>4×50 viragens (25 nado + vir + saída forte)</li>
+                <li>4×50 rendições (troca rápida e precisa)</li>
+              </ul>
+            </div>
+            <div class="serie-block">
+              <span class="serie-label">Aeróbio · 2400m · 3×</span>
+              <ul class="serie-items">
+                <li>6×100 Liv (1-Palas+BB, 2-BB, 3-NC) 1:15</li>
+                <li>100 Cos + 100 Bru</li>
+              </ul>
+            </div>
+            <div class="serie-block">
+              <span class="serie-label">Aeróbio Ligeiro · 2000m</span>
+              <ul class="serie-items">
+                <li>400 Liv C/B 5:00 + 2×200 Est 3:00</li>
+                <li>300 Liv 3:45 + 2×150 Cos 2:15</li>
+                <li>200 Liv 2:30 + 2×100 Bru 1:45</li>
+                <li>100 Liv 1:15 + 2×50 Mar 45"</li>
+              </ul>
+            </div>
+            <div class="serie-block">
+              <span class="serie-label">Recuperação · 200m</span>
+              <ul class="serie-items"><li>200 EE</li></ul>
+            </div>
+          </div>
+        </div>
+        <div class="grupo-col fun">
+          <div class="grupo-head">🌊 Fundo <span class="grupo-dist">6400m</span></div>
+          <div class="grupo-body">
+            <div class="grupo-coaches">Pedro Silva + Diogo Girão</div>
+            <div class="serie-block">
+              <span class="serie-label">Aquecimento · 1000m</span>
+              <ul class="serie-items">
+                <li>400 Livres · 300 Bra · 200 Per (100 costas + 100 bruços)</li>
+                <li>4×50 TT (25 drill + 25 NC)</li>
+              </ul>
+            </div>
+            <div class="serie-block">
+              <span class="serie-label">Técnica Específica · 800m</span>
+              <ul class="serie-items">
+                <li>4×50 técnica (alinhamento e eficiência)</li>
+                <li>4×50 subaquáticos (até 15m forte + suave)</li>
+                <li>4×50 viragens (25 nado + vir + saída forte)</li>
+                <li>4×50 rendições (troca rápida e precisa)</li>
+              </ul>
+            </div>
+            <div class="serie-block">
+              <span class="serie-label">Aeróbio · 2400m · 3×</span>
+              <ul class="serie-items">
+                <li>6×100 Liv (1-Palas+BB, 2-BB, 3-NC) 1:15</li>
+                <li>100 Cos + 100 Bru</li>
+              </ul>
+            </div>
+            <div class="serie-block">
+              <span class="serie-label">Aeróbio Ligeiro · 2000m</span>
+              <ul class="serie-items">
+                <li>400 Liv C/B 5:00 + 2×200 Est 3:00</li>
+                <li>300 Liv 3:45 + 2×150 Cos 2:15</li>
+                <li>200 Liv 2:30 + 2×100 Bru 1:45</li>
+                <li>100 Liv 1:15 + 2×50 Mar 45"</li>
+              </ul>
+            </div>
+            <div class="serie-block">
+              <span class="serie-label">Recuperação · 200m</span>
+              <ul class="serie-items"><li>200 EE</li></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SESSAO 3 -->
+    <div class="session-block">
+      <div class="session-header">
+        <h3>Sessão 3 — Água · 16:15–18:15</h3>
+        <span class="session-meta">Vel <strong>3400m</strong> · MF <strong>5600m</strong> · Fundo <strong>7100m</strong></span>
+      </div>
+      <div class="grupos-grid">
+        <div class="grupo-col vel">
+          <div class="grupo-head">⚡ Velocidade <span class="grupo-dist">3400m</span></div>
+          <div class="grupo-body">
+            <div class="grupo-coaches">Rui Costa + Rui Borges</div>
+            <div class="serie-block">
+              <span class="serie-label">Aquecimento</span>
+              <ul class="serie-items">
+                <li>8×75 @10 — Nado (4 SM + 4 ML)</li>
+                <li>8×50 @10 — Perna (4 SM + 4 ML)</li>
+              </ul>
+            </div>
+            <div class="serie-block">
+              <span class="serie-label">Série 1 · 2×</span>
+              <ul class="serie-items">
+                <li>2×50 Drills ML @10 — escolha livre</li>
+                <li>2×50 Perna tração com placa SM @20</li>
+                <li>4×15 máx ML @50 — 1ª volta perna mariposa dorsal ou ventral na superfície; 2ª volta nado, focar trans. + cheg.</li>
+              </ul>
+            </div>
+            <div class="serie-block">
+              <span class="serie-label">Recuperação</span>
+              <ul class="serie-items"><li>4×50 Ez ML @1'</li></ul>
+            </div>
+            <div class="serie-block">
+              <span class="serie-label">Série 2 · 3×</span>
+              <ul class="serie-items">
+                <li>1×50 P100 BB + PQ @1'30 (ou perna máximo)</li>
+                <li>2×15 máximo partida baixo @45 (+1 final)</li>
+                <li>1×35 máximo partida bloco</li>
+                <li>300 Ez ML — 100 nado + 100 perna + 100 nado</li>
+              </ul>
+            </div>
+            <div class="serie-block">
+              <span class="serie-label">Recuperação</span>
+              <ul class="serie-items">
+                <li>12×50 ML @1' — 3 livre + 6 A1 média recuperação + 3 livre</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="grupo-col mf">
+          <div class="grupo-head">🏊 Meio Fundo <span class="grupo-dist">5600m</span></div>
+          <div class="grupo-body">
+            <div class="grupo-coaches">Diogo Pinto + Filipe Maçãs</div>
+            <div class="serie-block">
+              <span class="serie-label">Aquecimento · 3000m</span>
+              <ul class="serie-items">
+                <li>500 livre (negativo)</li>
+                <li>5×100 (alternar 100 pernas / 100 pull)</li>
+                <li>10×50 técnica (estilos à escolha)</li>
+                <li>5×100 Estilos (ritmo controlado)</li>
+                <li>10×50 Liv PQ+Palas+SNK 10"</li>
+                <li>6×50 ritmo de prova 200</li>
+                <li>200 EE</li>
+              </ul>
+            </div>
+            <div class="serie-block">
+              <span class="serie-label">Série Principal · 1800m</span>
+              <ul class="serie-items">
+                <li>3× (5:00 entre séries) — 50 C/Salto 45" · 100 S/Salto 1:30 · 50 S/Salto</li>
+                <li>2×(4×150) 2:00/2:15 + 1:30 (100-A2, 50-A3)</li>
+              </ul>
+            </div>
+            <div class="serie-block">
+              <span class="serie-label">Recuperação · 800m</span>
+              <ul class="serie-items">
+                <li>4×100 Liv Regressivo 1-4 · 1:30</li>
+                <li>4×100 Liv Per 10"</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="grupo-col fun">
+          <div class="grupo-head">🌊 Fundo <span class="grupo-dist">7100m</span></div>
+          <div class="grupo-body">
+            <div class="grupo-coaches">Pedro Silva + Diogo Girão</div>
+            <div class="serie-block">
+              <span class="serie-label">Aquecimento · 2400m</span>
+              <ul class="serie-items">
+                <li>600 (300 EE + 200 TT + 100 Liv R1/3)</li>
+                <li>3×200 Est 3:00</li>
+                <li>3×200 Liv Bra 2:30 (Neg, Prog, Neg)</li>
+                <li>6×100 Liv Per S/B P1-3 1:45</li>
+              </ul>
+            </div>
+            <div class="serie-block">
+              <span class="serie-label">Técnica · 300m</span>
+              <ul class="serie-items"><li>6×50 deslize + contagem de ciclos</li></ul>
+            </div>
+            <div class="serie-block">
+              <span class="serie-label">Série Principal · 4200m</span>
+              <ul class="serie-items">
+                <li>36×100 (em cd 12× — 1:00 int)</li>
+                <li>12×100 @1:20/1:30</li>
+                <li>12×100 @1:15/1:25</li>
+                <li>12×100 @1:10/1:20</li>
+                <li>12×50 Liv @35"/40"</li>
+              </ul>
+            </div>
+            <div class="serie-block">
+              <span class="serie-label">Recuperação · 200m</span>
+              <ul class="serie-items"><li>Retorno à calma</li></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIA 3 -->
+  <section id="dia3" class="day-section">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Dia <span>3</span> — Sessão 4 + Sessão 5 + Encerramento</h2>
+    </div>
+
+    <div style="margin-bottom:28px;">
+      <div class="day-label"><span class="day-num">D3</span> Planeamento Horário</div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-time">08:00</div>
+          <div class="tl-body"><div class="tl-title">☕ Pequeno-Almoço</div></div>
+        </div>
+        <div class="tl-item water">
+          <div class="tl-time">09:30 – 11:00</div>
+          <div class="tl-body"><div class="tl-title">🏊 Sessão 4 — Água</div></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">12:30</div>
+          <div class="tl-body"><div class="tl-title">🍽 Almoço</div></div>
+        </div>
+        <div class="tl-item water">
+          <div class="tl-time">14:30 – 16:00</div>
+          <div class="tl-body"><div class="tl-title">🏊 Sessão 5 — Água</div></div>
+        </div>
+        <div class="tl-item highlight">
+          <div class="tl-time">16:15</div>
+          <div class="tl-body"><div class="tl-title">💬 Feedback</div></div>
+        </div>
+        <div class="tl-item highlight">
+          <div class="tl-time">17:00</div>
+          <div class="tl-body"><div class="tl-title">🏁 Encerramento Oficial</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SESSAO 4 -->
+    <div class="session-block">
+      <div class="session-header">
+        <h3>Sessão 4 — Água · 09:30–11:30</h3>
+        <span class="session-meta">Vel <strong>4000m</strong> · MF <strong>4000m</strong> · Fundo <strong>4000m</strong></span>
+      </div>
+      <div class="grupos-grid">
+        <div class="grupo-col vel">
+          <div class="grupo-head">⚡ Velocidade <span class="grupo-dist">4000m</span></div>
+          <div class="grupo-body">
+            <div class="grupo-coaches">Rui Costa + Rui Borges</div>
+            <div class="serie-block">
+              <span class="serie-label">Aquecimento · 1200m</span>
+              <ul class="serie-items">
+                <li>400 Liv R1/3, R1/5</li>
+                <li>4×100 Est 10" int</li>
+                <li>8×50 1ºE Per</li>
+              </ul>
+            </div>
+            <div class="serie-block">
+              <span class="serie-label">Velocidade · 600m · 2×</span>
+              <ul class="serie-items">
+                <li>50 Max C/Salto + 25 Suave</li>
+                <li>50 viragem (25 forte + vir + saída até 15m)</li>
+                <li>25 Suave</li>
+                <li>50 C/Salto (20 Max + 30 Suave)</li>
+                <li>100 EE Suave</li>
+              </ul>
+            </div>
+            <div class="serie-block">
+              <span class="serie-label">Aeróbio + força resistente · 1400m · 2×</span>
+              <ul class="serie-items">
+                <li>2×200 Liv C/PB e Palas 3:00</li>
+                <li>2×100 Liv com Palas 1:30</li>
+                <li>2×50 Per 1ºE C/PQ Forte 2:00</li>
+              </ul>
+            </div>
+            <div class="serie-block">
+              <span class="serie-label">Recuperação · 800m</span>
+              <ul class="serie-items">
+                <li>4×100 Liv Regressivo 1-4 · 1:30</li>
+                <li>4×100 Liv Per 10"</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="grupo-col mf">
+          <div class="grupo-head">🏊 Meio Fundo <span class="grupo-dist">4000m</span></div>
+          <div class="grupo-body">
+            <div class="grupo-coaches">Diogo Pinto + Filipe Maçãs</div>
+            <div class="serie-block">
+              <span class="serie-label">Aquecimento · 1200m</span>
+              <ul class="serie-items">
+                <li>400 Liv R1/3, R1/5</li>
+                <li>4×100 Est 10" int</li>
+                <li>8×50 1ºE Per</li>
+              </ul>
+            </div>
+            <div class="serie-block">
+              <span class="serie-label">Velocidade · 600m · 2×</span>
+              <ul class="serie-items">
+                <li>50 Max C/Salto + 25 Suave</li>
+                <li>50 viragem (25 forte + vir + saída até 15m)</li>
+                <li>25 Suave · 50 C/Salto (20 Max + 30 Suave) · 100 EE Suave</li>
+              </ul>
+            </div>
+            <div class="serie-block">
+              <span class="serie-label">Aeróbio + força resistente · 1400m · 2×</span>
+              <ul class="serie-items">
+                <li>2×200 Liv C/PB e Palas 3:00</li>
+                <li>2×100 Liv com Palas 1:30</li>
+                <li>2×50 Per 1ºE C/PQ Forte 2:00</li>
+              </ul>
+            </div>
+            <div class="serie-block">
+              <span class="serie-label">Recuperação · 800m</span>
+              <ul class="serie-items">
+                <li>4×100 Liv Regressivo 1-4 · 1:30</li>
+                <li>4×100 Liv Per 10"</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="grupo-col fun">
+          <div class="grupo-head">🌊 Fundo <span class="grupo-dist">4000m</span></div>
+          <div class="grupo-body">
+            <div class="grupo-coaches">Pedro Silva + Diogo Girão</div>
+            <div class="serie-block">
+              <span class="serie-label">Aquecimento · 1200m</span>
+              <ul class="serie-items">
+                <li>400 Liv R1/3, R1/5</li>
+                <li>4×100 Est 10" int</li>
+                <li>8×50 1ºE Per</li>
+              </ul>
+            </div>
+            <div class="serie-block">
+              <span class="serie-label">Velocidade · 600m · 2×</span>
+              <ul class="serie-items">
+                <li>50 Max C/Salto + 25 Suave</li>
+                <li>50 viragem (25 forte + vir + saída até 15m)</li>
+                <li>25 Suave · 50 C/Salto (20 Max + 30 Suave) · 100 EE Suave</li>
+              </ul>
+            </div>
+            <div class="serie-block">
+              <span class="serie-label">Aeróbio + força resistente · 1400m · 2×</span>
+              <ul class="serie-items">
+                <li>2×200 Liv C/PB e Palas 3:00</li>
+                <li>2×100 Liv com Palas 1:30</li>
+                <li>2×50 Per 1ºE C/PQ Forte 2:00</li>
+              </ul>
+            </div>
+            <div class="serie-block">
+              <span class="serie-label">Recuperação · 800m</span>
+              <ul class="serie-items">
+                <li>4×100 Liv Regressivo 1-4 · 1:30</li>
+                <li>4×100 Liv Per 10"</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SESSAO 5 -->
+    <div class="session-block">
+      <div class="session-header">
+        <h3>Sessão 5 — Água · 14:30–16:00</h3>
+        <span class="session-meta">Vel <strong>3100m</strong> · MF <strong>5500m</strong> · Fundo <strong>7100m</strong></span>
+      </div>
+      <div class="grupos-grid">
+        <div class="grupo-col vel">
+          <div class="grupo-head">⚡ Velocidade <span class="grupo-dist">3100m</span></div>
+          <div class="grupo-body">
+            <div class="grupo-coaches">Rui Costa + Rui Borges</div>
+            <div class="serie-block">
+              <span class="serie-label">Aquecimento</span>
+              <ul class="serie-items"><li>400 ML</li></ul>
+            </div>
+            <div class="serie-block">
+              <span class="serie-label">Série 1 · 2×</span>
+              <ul class="serie-items">
+                <li>4×100 ML @10</li>
+                <li>4×50 Pr ML @10</li>
+                <li>8×50 nado A1 SM @10</li>
+                <li>4×50 ML @10 — 25 sculls + 25 drills</li>
+              </ul>
+            </div>
+            <div class="serie-block">
+              <span class="serie-label">Série 2 · 1×</span>
+              <ul class="serie-items">
+                <li>4×50 @1'30 — 5s apneia + sub mín. 25m / 10s ap. + sub mín. 25m / 15s ap. + sub mín. 25m / 20s+ ap. + sub mín. 25m</li>
+              </ul>
+            </div>
+            <div class="serie-block">
+              <span class="serie-label">Recuperação</span>
+              <ul class="serie-items"><li>100 Ez ML</li></ul>
+            </div>
+          </div>
+        </div>
+        <div class="grupo-col mf">
+          <div class="grupo-head">🏊 Meio Fundo <span class="grupo-dist">5500m</span></div>
+          <div class="grupo-body">
+            <div class="grupo-coaches">Diogo Pinto + Filipe Maçãs</div>
+            <div class="serie-block">
+              <span class="serie-label">Aquecimento · 2300m</span>
+              <ul class="serie-items">
+                <li>300 EE + 200 Bra + 200 Per</li>
+                <li>6×100 (50 drill + 50 NC)</li>
+                <li>8×50 (25/25: scull na 1ª metade, NC na 2ª)</li>
+                <li>12×50 progressivo até ritmo de 200 1:00 (4-Palas+BB, 4-BB, 4-Nor)</li>
+              </ul>
+            </div>
+            <div class="serie-block">
+              <span class="serie-label">Série Principal · 2400m</span>
+              <ul class="serie-items">
+                <li>3× (1:30 entre séries) — 300 Liv Prog cd 100 4:00/4:15 · 6×50 1:00</li>
+                <li>4× (3:00 entre séries) — 50 S/Salto 50" · 50 S/Salto 45" · 50 S/Salto</li>
+              </ul>
+            </div>
+            <div class="serie-block">
+              <span class="serie-label">Recuperação · 800m</span>
+              <ul class="serie-items">
+                <li>4×100 Liv Regressivo 1-4 · 1:30</li>
+                <li>4×100 Liv Per 10"</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="grupo-col fun">
+          <div class="grupo-head">🌊 Fundo <span class="grupo-dist">7100m</span></div>
+          <div class="grupo-body">
+            <div class="grupo-coaches">Pedro Silva + Diogo Girão</div>
+            <div class="serie-block">
+              <span class="serie-label">Aquecimento · 2400m</span>
+              <ul class="serie-items">
+                <li>400 NC · 4×100 EST · 4×50 TT</li>
+                <li>8×100 Liv Bra 1:15</li>
+                <li>4×100 Liv Per 1:45</li>
+                <li>200 EE</li>
+              </ul>
+            </div>
+            <div class="serie-block">
+              <span class="serie-label">Técnica · 300m</span>
+              <ul class="serie-items"><li>6×50 deslize + alinhamento</li></ul>
+            </div>
+            <div class="serie-block">
+              <span class="serie-label">Série Principal · 4000m</span>
+              <ul class="serie-items">
+                <li>4×(4×100 1:15 + 400 NS, Prg, NS, Max) + 2:00</li>
+                <li>2×(4×100) MMP 1:45 + 2:00</li>
+              </ul>
+            </div>
+            <div class="serie-block">
+              <span class="serie-label">Recuperação · 400m</span>
+              <ul class="serie-items"><li>4×100 Liv Regressivo 1-4 · 1:30</li></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ATLETAS -->
+  <section id="atletas">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <h2 class="section-title">Grupos <span>&amp; Atletas</span></h2>
+    </div>
+
+    <div class="atletas-section">
+      <div class="atletas-grid">
+        <!-- VELOCIDADE -->
+        <div class="atleta-col vel-col">
+          <div class="atleta-col-head">⚡ Velocidade</div>
+          <div class="atleta-col-coaches">
+            <span class="coach-icon">👨‍🏫</span> Rui Costa + Rui Borges
+          </div>
+          <div class="atleta-list">
+            <div class="atleta-item"><span class="atleta-num">01</span><span class="atleta-name">MENDES, <em>Rafaela Ferreira</em></span></div>
+            <div class="atleta-item"><span class="atleta-num">02</span><span class="atleta-name">COUTINHO, <em>Eva Alexandra</em></span></div>
+            <div class="atleta-item"><span class="atleta-num">03</span><span class="atleta-name">OLIVEIRA, <em>Miguel Reis</em></span></div>
+            <div class="atleta-item"><span class="atleta-num">04</span><span class="atleta-name">PEREIRA, <em>Francisco Miguel</em></span></div>
+            <div class="atleta-item"><span class="atleta-num">05</span><span class="atleta-name">FERREIRA, <em>Duarte Santos</em></span></div>
+            <div class="atleta-item"><span class="atleta-num">06</span><span class="atleta-name">JOAQUIM, <em>Henrique Martins</em></span></div>
+            <div class="atleta-item"><span class="atleta-num">07</span><span class="atleta-name">ALECRIM, <em>Rodolfo Júnior</em></span></div>
+            <div class="atleta-item"><span class="atleta-num">08</span><span class="atleta-name">ALMEIDA, <em>Pedro Pereira</em></span></div>
+            <div class="atleta-item"><span class="atleta-num">09</span><span class="atleta-name">BARROSO, <em>Juliana Bushe</em></span></div>
+            <div class="atleta-item"><span class="atleta-num">10</span><span class="atleta-name">VIEIRA, <em>Frederica Vinhas</em></span></div>
+            <div class="atleta-item"><span class="atleta-num">11</span><span class="atleta-name">CARVALHO, <em>Matilde Brandão</em></span></div>
+            <div class="atleta-item"><span class="atleta-num">12</span><span class="atleta-name">BRITO, <em>Rita Canas</em></span></div>
+          </div>
+        </div>
+        <!-- MEIO FUNDO -->
+        <div class="atleta-col mf-col">
+          <div class="atleta-col-head">🏊 Meio Fundo</div>
+          <div class="atleta-col-coaches">
+            <span class="coach-icon">👨‍🏫</span> Diogo Pinto + Filipe Maçãs
+          </div>
+          <div class="atleta-list">
+            <div class="atleta-item"><span class="atleta-num">01</span><span class="atleta-name">NEVES, <em>Maria Gomes</em></span></div>
+            <div class="atleta-item"><span class="atleta-num">02</span><span class="atleta-name">ARAUJO, <em>Catarina Soares</em></span></div>
+            <div class="atleta-item"><span class="atleta-num">03</span><span class="atleta-name">FERNANDES, <em>Ricardo Figueiredo</em></span></div>
+            <div class="atleta-item"><span class="atleta-num">04</span><span class="atleta-name">OLIVEIRA, <em>Vasco Frischknecht</em></span></div>
+            <div class="atleta-item"><span class="atleta-num">05</span><span class="atleta-name">MIMOSO, <em>Renato Ferreira</em></span></div>
+            <div class="atleta-item"><span class="atleta-num">06</span><span class="atleta-name">ALMEIDA, <em>David Xavier</em></span></div>
+            <div class="atleta-item"><span class="atleta-num">07</span><span class="atleta-name">MOURA, <em>Margarida Ferreira</em></span></div>
+            <div class="atleta-item"><span class="atleta-num">08</span><span class="atleta-name">TAVEIRA, <em>Carolina Ratola</em></span></div>
+            <div class="atleta-item"><span class="atleta-num">09</span><span class="atleta-name">CARVALHO, <em>Maria Duarte</em></span></div>
+            <div class="atleta-item"><span class="atleta-num">10</span><span class="atleta-name">AZEVEDO, <em>Constança Lourenço</em></span></div>
+            <div class="atleta-item"><span class="atleta-num">11</span><span class="atleta-name">CARDEAL, <em>Leonor Nunes</em></span></div>
+          </div>
+        </div>
+        <!-- FUNDO -->
+        <div class="atleta-col fun-col">
+          <div class="atleta-col-head">🌊 Fundo</div>
+          <div class="atleta-col-coaches">
+            <span class="coach-icon">👨‍🏫</span> Pedro Silva + Diogo Girão
+          </div>
+          <div class="atleta-list">
+            <div class="atleta-item"><span class="atleta-num">01</span><span class="atleta-name">MEDEIROS, <em>Miguel Fragoso</em></span></div>
+            <div class="atleta-item"><span class="atleta-num">02</span><span class="atleta-name">PEREIRA, <em>Rui Silva</em></span></div>
+            <div class="atleta-item"><span class="atleta-num">03</span><span class="atleta-name">MARCELO, <em>Camila Duarte</em></span></div>
+            <div class="atleta-item"><span class="atleta-num">04</span><span class="atleta-name">HOLUB, <em>Sofia Hryhorivna</em></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nota-box">
+      <span class="nota-icon">📌</span>
+      <span><strong>Nota:</strong> Ricardo Antunes e Paulo Franco acompanham os diferentes grupos em função das necessidades.</span>
+    </div>
+  </section>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <strong>Federação Portuguesa de Natação</strong><br>
+  Moradia Complexo do Jamor · Estrada da Costa · 1495-688 Cruz Quebrada<br>
+  +351 21 415 81 90/91 · secretaria@fpnatacao.pt
+</footer>
+
+<script>
+  // Active nav highlighting
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(l => l.classList.remove('active'));
+        const link = document.querySelector(`.nav-link[href="#${e.target.id}"]`);
+        if (link) link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px' });
+  sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
